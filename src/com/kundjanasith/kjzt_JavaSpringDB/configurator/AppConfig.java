@@ -23,7 +23,6 @@ import com.kundjanasith.kjzt_JavaSpringDB.database.StudentJDBCTemplate;
 @ComponentScan(basePackages = "com.kundjanasith.kjzt_JavaSpringDB")
 public class AppConfig extends WebMvcConfigurerAdapter{
 	
-	// Apache tiles configuration
 	@Bean
 	public TilesConfigurer tilesConfigurer() {
 		TilesConfigurer tc = new TilesConfigurer();
@@ -39,13 +38,11 @@ public class AppConfig extends WebMvcConfigurerAdapter{
 	}
 	
 	
-	// Handle static resources
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/static/**").addResourceLocations("/static/");
 	}
 	
-	// Datasource properties
 	@Bean
 	public DataSource getDataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
@@ -63,4 +60,8 @@ public class AppConfig extends WebMvcConfigurerAdapter{
 		studentJDBCTemplate.setDataSource(getDataSource());
 		return studentJDBCTemplate;
 	}
+	
 }
+
+
+

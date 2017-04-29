@@ -22,24 +22,20 @@ import com.kundjanasith.kjzt_JavaSpringDB.database.StudentJDBCTemplate;
 @RequestMapping("/")
 public class AppController {
 	
-	// Wired to StudentJDBCTemplate in AppConfig
 	@Autowired
 	private StudentJDBCTemplate studentJDBCTemplate;
-	
-	// Home Mapping
+
 	@RequestMapping(value = { "/"}, method = RequestMethod.GET)
 	public String homePage() {
 		return "home";
 	}
 	
-	// Add new student get mapping
 	@GetMapping(value = { "/addNewStudent"})
 	public ModelAndView addNewStudentForm() {
 		Student student = new Student();
 		return new ModelAndView("addNewStudent", "student", student);
 	}
 	
-	// Add new student post mapping
 	@PostMapping(value = { "/addNewStudent"})
 	public ModelAndView addNewStudentSubmit(@ModelAttribute("student") Student student) {
 		boolean isValid = ( !student.getName().isEmpty() && !student.getGpax().isNaN() && !student.getAmbition().isEmpty() ) ? true : false;
@@ -83,3 +79,7 @@ public class AppController {
 	}
 	
 }
+
+
+
+
